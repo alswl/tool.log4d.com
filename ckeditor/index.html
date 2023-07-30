@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+    <title>DDD's CKEditor</title>
+    <style type="text/css">
+        html, body {
+            font-size: 11pt;
+            font-family: arial, sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            color: #4d4d4d;
+            line-height: 150%;
+            width: 100%;
+        }
+
+        #container {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #editor {
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="editor"></div>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                // default
+                // toolbar: [
+                //     'undo', 'redo',
+                //     '|', 'heading',
+                //     '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
+                //     '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code',
+                //     '|', 'link', 'uploadImage', 'blockQuote', 'codeBlock',
+                //     '|', 'bulletedList', 'numberedList', 'todoList', 'outdent', 'indent',
+                // ],
+                // plugins: [
+                    // Autoformat, BlockQuote, Bold, Heading, Image, ImageCaption, FormatPainter,
+                    // ImageStyle, ImageToolbar, Indent, Italic, Link, DocumentList, MediaEmbed,
+                    // Paragraph, Table, TableToolbar, Alignment, AutoImage, AutoLink,
+                    // CKBox, CloudServices, Code, CodeBlock, Essentials, ExportPdf,
+                    // ExportWord, ImportWord, FindAndReplace, Font, Highlight, HorizontalLine,
+                    // HtmlEmbed, ImageInsert, ImageResize, ImageUpload, IndentBlock, GeneralHtmlSupport,
+                    // LinkImage, DocumentListProperties, Mention, PageBreak, PasteFromOffice,
+                    // PictureEditing, RemoveFormat, ShowBlocks, SlashCommand, SourceEditing, SpecialCharacters,
+                    // SpecialCharactersEssentials, Style, Strikethrough, Subscript, Superscript,
+                    // TableCaption, TableCellProperties, TableColumnResize,
+                    // TableProperties, TableOfContents, Template, TextTransformation,
+                    // Underline, WordCount, WProofreader
+                // ],
+                toolbar: [
+                    'undo', 'redo',
+                    '|',
+                    // 'exportPdf', 'exportWord', 'importWord',
+                    '|',
+                    'showBlocks', 'formatPainter', 'findAndReplace', 'selectAll', 'wproofreader',
+                    '|',
+                    'heading',
+                    '|',
+                    'style',
+                    '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
+                    '-',
+                    'bold', 'italic', 'underline',
+                    {
+                        label: 'Formatting',
+                        icon: 'text',
+                        items: ['strikethrough', 'subscript', 'superscript', 'code', '|', 'removeFormat']
+                    },
+                    '|',
+                    'specialCharacters', 'horizontalLine', 'pageBreak',
+                    '|',
+                    'link', 'insertImage', 'ckbox', 'insertTable', 'tableOfContents', 'insertTemplate',
+                    {
+                        label: 'Insert',
+                        icon: 'plus',
+                        items: ['highlight', 'blockQuote', 'mediaEmbed', 'codeBlock', 'htmlEmbed']
+                    },
+                    '|',
+                    'alignment',
+                    '|',
+                    'bulletedList', 'numberedList', 'outdent', 'indent',
+                    '|',
+                    'sourceEditing'
+                ],
+            })
+            .then(editor => {
+                const toolbarHeight = 42;
+                const height = (window.innerHeight - toolbarHeight) + 'px';
+                editor.editing.view.change(writer => {
+                    writer.setStyle('min-height', height, editor.editing.view.document.getRoot());
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
+</script>
+</body>
+</html>
+<!--vim: set sw=2:-->
