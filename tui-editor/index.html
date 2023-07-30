@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>TOAST UI Editor</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"/>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
+    <style>
+        html, body {
+            font-size: 11pt;
+            font-family: arial, sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            color: #4d4d4d;
+            line-height: 150%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="editor"></div>
+
+<script type="text/javascript">
+    const Editor = toastui.Editor;
+    const editor = new Editor({
+        el: document.querySelector('#editor'),
+        height: 'auto',
+        initialEditType: 'markdown',
+        previewStyle: 'vertical'
+    });
+</script>
+</body>
+</html>
+
